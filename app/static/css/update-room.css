@@ -1,0 +1,351 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body, html {
+    height: 100%;
+}
+
+.background {
+    background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background-color: white;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+}
+
+.form h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4facfe;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background-color: #00f2fe;
+}
+
+.bottom-link {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.register-button {
+    display: inline-block;
+    margin-top: 5px;
+    background-color: transparent;
+    border: 2px solid #4facfe;
+    color: #4facfe;
+    padding: 8px 15px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.register-button:hover {
+    background-color: #4facfe;
+    color: white;
+}
+
+.button-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+}
+.button-link:hover {
+    background-color: #0056b3;
+}
+.readonly-field {
+    padding: 5px 10px;
+    background-color: #f1f1f1;
+    border-radius: 4px;
+    font-family: monospace;
+}
+
+.message {
+    color: green;
+    font-weight: bold;
+}
+
+.error-msg {
+    color: red;
+    font-weight: bold;
+}
+
+/* Кнопка "Меню" */
+.styled-button {
+  position: fixed;
+  left: 10px;
+  top: 10px;
+  z-index: 1000;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(90deg, #00caf3, #66b2ed);
+  color: #5f2eea;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.styled-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+/* Общие стили */
+body, html {
+  height: 100%;
+  margin: 0;
+  background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+  color: #000;
+  font-family: Arial, sans-serif;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.background {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  background-color: #fff;
+  padding: 20px 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 400px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+/* Метки и инпуты */
+.label-text {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: inherit;
+  transition: color 0.3s;
+}
+
+input[type="text"],
+input[type="file"] {
+  width: 100%;
+  padding: 8px 10px;
+  margin-top: 4px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  color: #000;
+  background-color: #fff;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="file"]:focus {
+  border-color: #666;
+  outline: none;
+}
+
+button.btn {
+  margin-top: 15px;
+  width: 100%;
+  padding: 10px;
+  background-color: #4facfe;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button.btn:hover {
+  background-color: #00f2fe;
+}
+
+/* Сообщения */
+.message {
+  color: green;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.error-msg {
+  color: red;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+/* Username display */
+.username-display {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-weight: bold;
+  font-size: 16px;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  transition: color 0.3s;
+}
+
+.username-display a {
+  color: #000;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+/* Переключатель темы */
+.switch-wrapper {
+  margin-top: 6px;
+}
+.switch {
+  font-size: 17px;
+  display: inline-block;
+  width: 3.5em;
+  height: 2em;
+  position: relative;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  --background: #28096b;
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: var(--background);
+  transition: .5s;
+  border-radius: 30px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 1.4em;
+  width: 1.4em;
+  border-radius: 50%;
+  left: 10%;
+  bottom: 15%;
+  box-shadow: inset 8px -4px 0px 0px #fff000;
+  background: var(--background);
+  transition: .5s;
+}
+
+input:checked + .slider {
+  background-color: #522ba7;
+}
+
+input:checked + .slider:before {
+  transform: translateX(100%);
+  box-shadow: inset 15px -4px 0px 15px #fff000;
+}
+
+/* Тёмная тема */
+html.dark-theme {
+  background: linear-gradient(135deg, #141E30, #243B55);
+  color: #fff;
+}
+
+html.dark-theme body,
+html.dark-theme .background {
+  background: linear-gradient(135deg, #141E30, #243B55);
+  color: white;
+}
+
+html.dark-theme .container {
+  background-color: #121212;
+  color: white;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+html.dark-theme input[type="text"],
+html.dark-theme input[type="file"] {
+  background-color: #222;
+  color: white;
+  border: 1px solid #555;
+}
+
+html.dark-theme input[type="text"]:focus,
+html.dark-theme input[type="file"]:focus {
+  border-color: #bbb;
+  outline: none;
+}
+
+html.dark-theme button.btn {
+  background-color: #7a5cf6;
+  color: white;
+}
+
+html.dark-theme button.btn:hover {
+  background-color: #5a3dcf;
+}
+
+html.dark-theme .username-display {
+  color: #fff;
+}
+
+html.dark-theme .username-display a {
+  color: #fff;
+}

@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  <title>{{ title }}</title>
+  <link rel="icon" type="image/x-icon" href="{% static 'icons/icons8-brutus-32.ico' %}">
+  <link rel="stylesheet" href="{% static 'css/all-room-views.css' %}">
+{% endblock %}
+
+{% block body %}
+<div class="username-display">
+  {% if user.username %}
+    <a href="/settings" class="login-link">👤 {{ user.username }}</a>
+    <a href="/wallet" class="login-link">({{ user.wallet }})</a>
+  {% else %}
+    <a href="/login" class="login-link">👤 Ви не увійшли в акаунт</a>
+    <a href="/login" class="login-link">Увійти</a>
+  {% endif %}
+  <div class="switch-wrapper">
+    <label class="switch" title="Перемкнути тему">
+      <input type="checkbox" id="themeToggle" aria-label="Theme toggle">
+      <span class="slider"></span>
+    </label>
+  </div>
+</div>
+
+<div style="display: flex; flex-direction: row; gap: 32px; overflow-x: auto; padding: 30px;">
+  {% for room in rooms %}
+    <a href="{% url 'room-info' room_id=room.id %}" style="text-decoration: none; color: inherit;">
+      <div class="room-card">
+        {% if room.photo %}
+          <img src="{{ room.photo.url }}" alt="Фото кімнати" style="width: 100%; height: 180px; object-fit: cover; border-radius: 12px; margin-bottom: 16px;">
+        {% endif %}
+        <h2 style="margin: 0 0 10px 0;">{{ room.title }}</h2>
+        <div style="font-size: 15px; margin-bottom: 8px;">Адреса: {{ room.address }}</div>
+        <div style="font-size: 15px; margin-bottom: 8px;">Ціна: {{ room.price|floatformat:"0" }} грн</div>
+      </div>
+    </a>
+  {% empty %}
+    <div>Немає кімнат для відображення.</div>
+  {% endfor %}
+</div>
+
+<div class="username-display">
+  {% if user.username %}
+    <div id="menu" class="styled-button" onclick="redirectToMenu()">
+      🔥
+      <span style="color: #6a5acd; text-decoration: none; font-weight: bold;">Меню</span>
+      🔥
+    </div>
+  {% else %}
+    <div id="menu" class="styled-button" onclick="redirectToMenuNone()">
+      🔥
+      <span style="color: #6a5acd; text-decoration: none; font-weight: bold;">Меню</span>
+      🔥
+    </div>
+  {% endif %}
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.getElementById("themeToggle");
+    const html = document.documentElement;
+
+    if (localStorage.getItem("darkTheme") === "true") {
+      html.classList.add("dark-theme");
+      toggle.checked = true;
+    }
+
+    toggle.addEventListener("change", function () {
+      html.classList.toggle("dark-theme", this.checked);
+      localStorage.setItem("darkTheme", this.checked);
+    });
+  });
+
+  function redirectToMenu() {
+    window.location.href = "/menu/{{ user.id }}";
+  }
+
+  function redirectToMenuNone() {
+    window.location.href = "/menu/none";
+  }
+</script>
+{% endblock %}

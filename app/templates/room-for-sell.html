@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  <title>Реєстрація</title>
+  <link rel="icon" type="image/x-icon" href="{% static 'icons/icons8-brutus-32.ico' %}">
+  <link rel="stylesheet" href="{% static 'css/room-for-sell.css' %}">
+{% endblock %}
+
+{% block body %}
+
+<div class="menu-button-wrapper">
+  {% if user.username %}
+    <div id="menu" class="styled-button" onclick="redirectToMenu()">
+      🔥 <span>Меню</span> 🔥
+    </div>
+  {% else %}
+    <div id="menu" class="styled-button" onclick="redirectToMenuNone()">
+      🔥 <span>Меню</span> 🔥
+    </div>
+  {% endif %}
+</div>
+
+<div class="username-display">
+  {% if user.username %}
+    <a href="/settings" class="login-link">👤 {{ user.username }}</a>
+    <a href="/wallet" class="login-link">({{ user.wallet }})</a>
+  {% else %}
+    👤 Ви не увійшли в акаунт<br>
+    <a href="/login" class="login-link">Увійти</a>
+  {% endif %}
+  <div class="switch-wrapper">
+    <label class="switch" title="Перемкнути тему">
+      <input type="checkbox" id="themeToggle" aria-label="Theme toggle">
+      <span class="slider"></span>
+    </label>
+  </div>
+</div>
+
+<!-- Форма -->
+<div class="background rooms-wiew">
+  <div class="container">
+    <form method="post" action="/room-for-sell/{{ user.id }}" enctype="multipart/form-data" class="form">
+      {% csrf_token %}
+      <h1>Виставити на продаж</h1>
+
+      <label>Назва:
+        <input type="text" name="title" required>
+      </label>
+
+      <label>Фото:
+        <input type="file" name="photo" accept="image/*" id="photoInput" required>
+      </label>
+      <br>
+      <img id="photoPreview" src="#" alt="Превью фото" style="display:none; max-width: 300px; margin-top: 10px;">
+
+      <label>Ціна за день:
+        <input type="text" name="price" value="{{ room.price|floatformat:0 }}" required>
+      </label>
+
+      <label>Адреса:
+        <input type="text" name="address" required>
+      </label>
+
+      <label>Ваш номер телефону:
+        <input type="text" name="phone_number" value="{{ user.phone_number }}" required>
+      </label>
+      <button type="submit" class="btn">Виставити на продаж</button>
+    </form>
+  </div>
+</div>
+
+<!-- Скрипты -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.getElementById("themeToggle");
+    const html = document.documentElement;
+
+    if (localStorage.getItem("darkTheme") === "true") {
+      html.classList.add("dark-theme");
+      toggle.checked = true;
+    }
+
+    toggle.addEventListener("change", function () {
+      html.classList.toggle("dark-theme", this.checked);
+      localStorage.setItem("darkTheme", this.checked);
+    });
+
+    const photoInput = document.getElementById('photoInput');
+    const photoPreview = document.getElementById('photoPreview');
+
+    photoInput.addEventListener('change', function () {
+      const file = this.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.addEventListener('load', function () {
+          photoPreview.setAttribute('src', this.result);
+          photoPreview.style.display = 'block';
+        });
+        reader.readAsDataURL(file);
+      } else {
+        photoPreview.style.display = 'none';
+        photoPreview.setAttribute('src', '#');
+      }
+    });
+  });
+
+  function redirectToMenu() {
+    window.location.href = "/menu/{{ user.id }}";
+  }
+
+  function redirectToMenuNone() {
+    window.location.href = "/menu/none";
+  }
+</script>
+{% endblock %}
