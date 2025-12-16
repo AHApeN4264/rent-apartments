@@ -1,33 +1,21 @@
-🌐 Наш сайт — це зручна платформа для пошуку, бронювання та здачі житла в оренду!
+🌐 Our website is a convenient platform for searching, booking, and renting accommodations!
 
-🏠 Тут ви можете:
+🏠 Here you can:
 
-    • Легко знайти доступні варіанти оренди
-    
-    • Знайти кімнату за назвою
-    
-    • Швидко оформити бронювання онлайн
-    
-    • Виставляти власне житло на оренду
+    • Easily find available rental options
 
-🎨 Завдяки сучасному дизайну та зрозумілому інтерфейсу,
-пошук і здача житла стають швидкими та зручними процесами.
+    • Search for a room by name
 
-🛠️ Адміністратори можуть легко оновлювати інформацію та керувати сайтом у реальному часі.
+    • Quickly make online bookings
 
-👨‍💻 Про розробника:    
-Я — ентузіаст веб-розробки, який створює сучасні та зручні сайти з нуля.    
-Маю досвід роботи з Python, Flask, FastApi, Django, HTML, CSS та базами даних.    
-Люблю робити проєкти, та постійно вдосконалюю свої навички, впроваджуючи нові технології.
+    • List your own property for rent
 
+🎨 Thanks to a modern design and intuitive interface,
+searching for and renting accommodations becomes a fast and convenient process.
 
+🛠️ Administrators can easily update information and manage the site in real time.
 
-
-
-
-
-
-
-
-
-
+👨‍💻 About the developer:
+I am a web development enthusiast who creates modern and user-friendly websites from scratch.
+I have experience with Python, Flask, FastAPI, Django, HTML, CSS, and databases.
+I enjoy building projects and constantly improve my skills by implementing new technologies.
